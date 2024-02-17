@@ -1,10 +1,8 @@
-import * as React from "react"
-import { Slot } from "@radix-ui/react-slot"
-import { cva, type VariantProps } from "class-variance-authority"
-
-import { cn } from "@/lib/utils"
-
-
+import { Slot } from "@radix-ui/react-slot";
+import { cva, type VariantProps } from "class-variance-authority";
+import React from "react";
+import { cn } from "@/lib/utils";
+import { ReactNode, RefObject } from "react";
 
 
 const buttonVariants = cva(
@@ -34,31 +32,43 @@ const buttonVariants = cva(
       size: "default",
     },
   }
-)
+);
 
-export interface ButtonProps
-  extends React.ButtonHTMLAttributes<HTMLButtonElement>,
-    VariantProps<typeof buttonVariants> {
+type ButtonProps = React.ButtonHTMLAttributes<HTMLButtonElement> & {
   asChild?: boolean;
   href?: string;
-}
+};
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant, size, asChild = false, href, ...props }, ref) => {
-    const Comp = asChild ? Slot : (href ? 'a' : 'button');
+type AnchorProps = React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
-    return (
-      <Comp
-        className={cn(buttonVariants({ variant, size, className }))}
-        ref={ref}
-        href={href}
-        {...props}
-      >
-        {asChild ? <Slot>{props.children}</Slot> : props.children}
-      </Comp>
-    );
-  }
-);
-Button.displayName = "Button"
+type MappedEventHandlers = {
+  [K in keyof ButtonProps]: K extends `on${infer EventName}`
+    ? `on${Capitalize<EventName>}` extends keyof AnchorProps
+      ? AnchorProps[`on${Capitalize<EventName>}`]
+      : ButtonProps[K]
+    : ButtonProps[K];
+};
 
-export { Button, buttonVariants }
+const Button = React.forwardRef<
+  HTMLButtonElement | HTMLAnchorElement,
+  ButtonProps & MappedEventHandlers
+>(({ className,  asChild = false, href, ...props }, ref) => {
+  const Comp = asChild ? Slot : (href ? "a" : "button");
+
+  // Define the type of ref based on the element being rendered
+  const elementRef = (ref as React.Ref<HTMLButtonElement> & React.Ref<HTMLAnchorElement>);
+
+  return (
+    <Comp
+      className={cn(buttonVariants({  className }))}
+      ref={elementRef}
+      {...(href ? { href } : {})} // Pass the href prop down to the Comp component
+      {...props}
+    >
+      {asChild ? <Slot>{props.children}</Slot> : props.children}
+    </Comp>
+  );
+});
+Button.displayName = "Button";
+
+export { Button, buttonVariants };
