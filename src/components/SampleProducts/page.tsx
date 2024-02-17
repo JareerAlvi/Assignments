@@ -1,4 +1,5 @@
-
+import Link from "next/link"
+import ProductCard from "@/app/all-products/components/cards"
 export default function Samples(){
     return(
         <div>
@@ -14,15 +15,16 @@ export default function Samples(){
        
     
 
-<img
-    width="400"
-    height="200"
-    src="./Hackathon-2/product1.png"
-    alt="hero"
-    className="  "
-  /> 
-<div className="pt-2 font-bold text-lg ">Brushed Raglan SweatShirt</div>
-<div className="pt-3 font-bold text-lg">$195</div>
+<ProductCard
+    href="/products/brushed-raglan-sweatshirt"
+    imageSrc="./Hackathon-2/product1.png"
+    shirtName="Brushed Raglan Sweatshirt"
+    shirtType=""
+    price={195}
+    height={200}
+    width={400}
+    />
+
 
     
 </div>
@@ -30,32 +32,34 @@ export default function Samples(){
 <div className="transition-transform duration-300 transform hover:scale-105 cursor-pointer">
     
 
-<img
-    width="400"
-    height="200"
-    src="./Hackathon-2/product.png"
-    alt="hero"
-    className="  "
-  /> 
-<div className="pt-2 font-bold text-lg ">Cameryn Sash Tie Dress</div>
-<div className="pt-3 font-bold text-lg">$545</div>
+<ProductCard
+    href="/products/cameryn-Sash-Tie-Dress"
+    imageSrc="./Hackathon-2/product.png"
+    shirtName="Cameryn Sash Tie Dress"
+    shirtType=""
+    price={545}
+    height={200}
+    width={400}
+    />
+
 
     
 </div>
 
 
-<div className="transition-transform duration-300 transform hover:scale-105 cursor-pointer">
+<div className="transition-transform duration-300 transform hover:scale-105 cursor-pointer ">
     
 
-<img
-    width="400"
-    height="200"
-    src="./Hackathon-2/product2.png"
-    alt="hero"
-    className="  "
-  /> 
-<div className="pt-2 font-bold text-lg ">Flex SweatShirt</div>
-<div className="pt-3 font-bold text-lg">$175</div>
+<ProductCard
+    href="/products/flex-sweatshirt"
+    imageSrc="./Hackathon-2/product2.png"
+    shirtName="Flex Sweatshirt"
+    shirtType=""
+    price={175}
+    height={200}
+    width={400}
+    
+    />
 
     
 </div>

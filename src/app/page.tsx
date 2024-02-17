@@ -83,7 +83,7 @@ export default function Home() {
       </p> 
 
       <div className="pt-10">
-  <Button className="bg-black text-white pt-2 hover:bg-inherit hover:text-black">See All Products</Button>
+  <Button href="/all-products" className="bg-black text-white pt-2 hover:bg-inherit hover:text-black">See All Products</Button>
       </div>
   </div>
 </div>

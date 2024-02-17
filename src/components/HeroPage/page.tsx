@@ -63,7 +63,7 @@ const Hero = () => {
             <div className="w-full px-4 lg:w-6/12">
               <div className="lg:ml-auto lg:text-right">
                 <div className="relative z-10 inline-block pt-0 lg:pt-0">
-                <div className="group rounded-full bg-red-100 transition duration-300 ease-in-out transform hover:scale-110 cursor-pointer">
+                <div className="group rounded-full bg-red-100 transition duration-300 ease-in-out transform ">
   <img
     width="800"
     height="600"

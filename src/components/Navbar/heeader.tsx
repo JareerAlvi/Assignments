@@ -43,9 +43,9 @@ const Navbar = () => {
                 } `}
               >
                 <ul className="block lg:flex items-center py-4  ">
-                  <ListItem NavLink="/#">Female</ListItem>
-                  <ListItem NavLink="/#">Male</ListItem>
-                  <ListItem NavLink="/#">Kids</ListItem>
+                  <ListItem NavLink="/female">Female</ListItem>
+                  <ListItem NavLink="/male">Male</ListItem>
+                  <ListItem NavLink="/kids">Kids</ListItem>
                   <ListItem NavLink="/all-products">All Products</ListItem>
                   <ListItem  NavLink="/#"  >  <div className="px-10"><SearchBar placeholder="Search"/></div></ListItem>
                  <ListItem NavLink="/#">     <ShoppingCartIcon/>   </ListItem> 
